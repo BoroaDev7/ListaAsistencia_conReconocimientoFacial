@@ -75,7 +75,6 @@ while(True):
                 id = studentIds[matchIndex]
                 if counter == 0:
                     cvzone.putTextRect(imgBackground, "Loading", (275, 400))
-                    cv2.imshow("Lista Asistencia", imgBackground)
                     cv2.waitKey(1)
                     counter = 1
                     modeType = 1
@@ -95,13 +94,13 @@ while(True):
                                                    "%Y-%m-%d %H:%M:%S")
                 secondsElapsed = (datetime.now() - datetimeObject).total_seconds()
                 print(secondsElapsed)
-                if secondsElapsed > 30:
+                if secondsElapsed > 60:
                     ref = db.reference(f'Estudiantes/{id}')
                     studentInfo['asistencia_total'] += 1
                     ref.child('asistencia_total').set(studentInfo['asistencia_total'])
                     ref.child('ultima_asistencia').set(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
                 else:
-                    modeType = 3
+                    modeType = 1
                     counter = 0
                     imgBackground[44:44 + 633, 808:808 + 414] = imgListaModos[modeType]
 
