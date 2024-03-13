@@ -21,8 +21,8 @@ bucket = storage.bucket()
 
 
 cap= cv2.VideoCapture(0)
-cap.set(3,640)
-cap.set(4,480)
+cap.set(3,300)
+cap.set(4,180)
 
 imgBackground = cv2.imread('Recursos/fondo.png')
 
